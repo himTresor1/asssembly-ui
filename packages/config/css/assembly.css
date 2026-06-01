@@ -1,0 +1,109 @@
+/**
+ * Assembly Design System — Standalone Unified Theme Sheet (assembly.css)
+ * 
+ * Drop this stylesheet directly into your Next.js project (e.g. app/globals.css)
+ * to instantly inherit all Assembly visual foundations, orange-themed brand palettes,
+ * custom typography bindings, animations, and accessibility styles.
+ */
+
+@layer base {
+  :root {
+    /* Brand Theme Colors — Premium Vibrant Light Orange */
+    --brand-50: 32 100% 98%;
+    --brand-100: 32 100% 95%;
+    --brand-200: 32 100% 90%;
+    --brand-300: 32 100% 82%;
+    --brand-400: 32 100% 72%;
+    --brand-500: 32 100% 58%; /* Core Brand Primary HSL */
+    --brand-default: 32 100% 58%;
+    --brand-600: 24 100% 52%;
+    --brand-700: 16 100% 45%;
+    --brand-800: 12 100% 36%;
+    --brand-900: 8 100% 28%;
+    --brand-950: 6 100% 15%;
+
+    /* Standard Font Mappings (Outfit & Fira Code fallback bindings) */
+    --font-custom: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "Fira Code", "Office Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+    --font-source-code-pro: var(--font-mono);
+    --font-fira-code: var(--font-mono);
+
+    /* Layout & Viewport Sizing Token */
+    --container-site: 80rem; /* 1280px Centered constraint */
+
+    /* Basic Theme Semantic Foundations (Light Mode Default) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 32 100% 58%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+  }
+
+  .dark {
+    /* Brand Theme Colors — Vibrant Dark Orange */
+    --brand-50: 32 100% 8%;
+    --brand-100: 32 100% 12%;
+    --brand-200: 32 100% 20%;
+    --brand-300: 32 100% 30%;
+    --brand-400: 32 100% 42%;
+    --brand-500: 32 100% 58%; /* Core Brand Primary HSL */
+    --brand-default: 32 100% 58%;
+    --brand-600: 24 100% 52%;
+    --brand-700: 16 100% 45%;
+    --brand-800: 12 100% 36%;
+    --brand-900: 8 100% 28%;
+    --brand-950: 6 100% 15%;
+
+    /* Semantic Theme Foundations (Dark Mode Default) */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 32 100% 58%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    font-family: var(--font-custom);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Global Font Ligatures support for premium coding views */
+pre, code {
+  font-family: var(--font-mono) !important;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "liga" on, "calt" on;
+}
+
+/* Base Accessibility focus overlays & transitions */
+.focus-ring {
+  outline: none;
+  transition: box-shadow 0.15s ease-in-out;
+}
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
+}

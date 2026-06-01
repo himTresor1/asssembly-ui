@@ -1,0 +1,15 @@
+{
+  "name": "@assembly/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "assembly-ui": "./bin/assembly-ui.js"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "fs-extra": "^11.1.1",
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2",
+    "tsx": "catalog:"
+  }
+}

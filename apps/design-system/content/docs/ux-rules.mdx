@@ -1,0 +1,189 @@
+---
+title: UX Rules
+description: Universal and domain-specific design rules for the Assembly Design System. Version 1.0.0.
+---
+
+These guidelines represent the strict, non-negotiable **Assembly UX Rules Version 1.0.0**. They are designed to guarantee visual rhythm, absolute predictability, and premium user experience (UX) across every screen and every application.
+
+---
+
+## Universal UX Rules
+
+These rules apply to every product, every domain, and every screen. They are non-negotiable.
+
+### Feedback
+* **Visual confirmation within 100ms:** Every user action must produce immediate visual feedback. If a query or database action takes longer than 100ms, show a loading indicator or skeleton screen immediately.
+* **No ambiguous states:** NEVER leave a button or interactive element in an ambiguous state after click. Immediately disable it, show a spinner, or change its label (e.g. "Saving...").
+* **Distinct states:** Success and error states must be highly visually distinct. Never rely on color alone (to assist colorblind users)—always pair color shifts with descriptive text and clear icons.
+* **Friction by design:** Destructive actions (delete, remove, revoke) MUST require a confirmation step. The confirmation dialog must clearly state what will be destroyed and whether the action is reversible.
+* **Human-readable errors:** NEVER use a generic "Something went wrong." Every error message must specify: what failed, why it failed, and what step the user can take next.
+
+### Loading & Empty States
+* **Defined loading frames:** Every screen loading async data must have a structured loading state. Skeleton screens are preferred over spinners for layout-heavy content to prevent layout shift.
+* **Opinionated empty states:** Every screen that can be empty must have a defined empty state. It must explain *why* it's empty and offer a prominent primary button to take action.
+* **No blank screens:** NEVER show a completely blank white/dark screen at any point in a user flow.
+* **Prevent layout shift:** Reserve space for content boxes before data load. Skeletons must match the dimensions of the final loaded card or list item.
+
+### Hierarchy & Focus
+* **Single primary CTA:** Every view must have exactly **ONE** primary action. Never show two equal-weight calls to action side by side.
+* **Fold prioritization:** The most important action must be the most visually prominent. Never bury a primary CTA below the fold or in a secondary visual treatment.
+* **De-prioritize destruction:** Destructive actions must never be the primary action on a screen. They must be styled as secondary (outline, text link) or require multi-step confirmation paths.
+
+### Accessibility (a11y)
+* **Full keyboard operation:** Every interactive element must be reachable and operable via keyboard alone.
+* **Accessible descriptions:** Every image, icon, and non-text element must have a meaningful alt text or `aria-label`.
+* **Visible focus rings:** Focus states must be visible. Never remove the browser default focus outline without replacing it with Assembly's HSL visible focus ring.
+* **WCAG Contrast:** Text contrast must meet WCAG AA at a minimum (4.5:1 for body text, 3:1 for large text and UI headers).
+* **Mobile tap targets:** Touch targets must be at least 44×44px on mobile screens. Never shrink tap targets to save layout space.
+
+### Copywriting & Copy Cases
+* **Sentence Case Default:** All UI text uses sentence case (e.g. "Create database", "Revoke API key"). Never Title Case on labels, buttons, or headings unless it is a proper noun.
+* **Present-Tense Action Verbs:** Buttons must use action verbs describing the direct outcome (e.g., "Save changes", "Send invoice") instead of generic terms ("OK", "Submit", "Yes").
+* **Plain Language:** Never expose raw error codes or technical API stack traces to end users.
+* **Required Labels:** Placeholders are not labels. Inputs must always have a visible label.
+* **Positive Phrasing:** Avoid negative framing. E.g., prefer "Add a card to get started" over "No payment methods found."
+
+### Navigation
+* **Predictable location:** Users must always know their current location (active menu item, breadcrumbs, visible page title).
+* **Consistent layout:** Navigation menus must remain consistent across screens. Never dynamically hide or move headers based on state unless structurally required.
+* **Predictable back navigation:** Back buttons/gestures must return the user to the immediate previous screen—never a default homepage.
+* **External links:** Must open in a new tab and be visually marked with an external link icon.
+
+---
+
+## Forms & Data Entry
+
+### Validation & Layout
+* **Validation on Blur:** Validate fields on blur (losing focus), not on keystroke. Never punish the user while they are actively typing. Exception: password strength checkers.
+* **Character limits:** For inputs with hard character limits, show the remaining character count when the user is within 20% of the limit.
+* **Error positioning:** Show validation errors immediately next to the field they relate to, never only in a generic top banner.
+* **Input preservation:** NEVER clear form inputs because of a server-side validation failure.
+* **Visual layout:** Single-column forms are always preferred. Two-column layouts are only acceptable on desktop for logically paired fields (first/last name, city/postcode).
+* **Submit placement:** Place primary submit buttons at the end of the form, left-aligned on desktop or full-width on mobile.
+
+### Dirty States & Auto-Save
+* **Dirty exit guard:** If a user has unsaved changes and attempts to navigate away, they MUST be shown a confirmation dialog (`DiscardChangesConfirmationDialog`).
+* **Auto-save visibility:** If a form auto-saves, show a subtle "Saved" indicator. If saving is pending, show an "Unsaved changes" indicator.
+* **Clear confirmations:** Reset or clear actions must always require confirmation. Never clear a form silently.
+
+---
+
+## Authentication UX Rules
+
+### Login, MFA & Sessions
+* **Precise login errors:** Distinguish clearly between "email not found", "wrong password", "account locked", or "disabled account" to assist troubleshooting (unless strict enumeration policy explicitly forbids it).
+* **Password visibility:** Passwords must always have a visible toggle to show/hide inside the input on the right.
+* **Auto-fill compatibility:** Always support browser password managers and autocomplete. Never disable these options.
+* **MFA pasting:** OTP inputs must be a single field that accepts paste. Never split codes into 6 separate rigid inputs unless each auto-advances.
+* **Session warnings:** Warn users at 5 minutes remaining before session expiry. Upon expiry, preserve page state so they can resume after re-authentication.
+
+---
+
+## AI Agent UX Rules
+
+### Transparency & Trust
+* **Explicit AI indicators:** AI-generated content must always be clearly labeled as such. Never present AI output as human-authored.
+* **Auditable data:** Show the raw source data or query parameters the AI is using to generate a result.
+* **Honest confidence:** Highlight when a result is low-confidence or query boundaries are reached.
+* **Streaming generation:** AI text outputs must stream progressively. Never force users to stare at static loaders.
+
+### Interaction Patterns
+* **Click-to-Apply actions:** AI actions modifying files, data, or settings MUST use a "click to apply" pattern. Never auto-write AI suggestions without user approval.
+* **Visual diff previews:** Show a clear before/after diff preview before allowing the user to commit AI-generated edits to existing content.
+* **30-second Undo:** Provide a temporary, visible "Undo last AI action" snackbar toast after applying a change. This is non-negotiable.
+* **Step-by-step progress:** During multi-step agentic flows, show each step as it executes. Support pause, resume, and show exactly which step failed if a run aborts.
+
+---
+
+## Specialized Domains
+
+### Fintech UX Rules
+* **Precise decimals:** Financial numbers must show full decimal precision (e.g. `$1,204.50`, not `$1,204`).
+* **Clear currency:** Never show a monetary value without its currency symbol or code.
+* **Receipt summary:** Show a receipt containing transaction ID, source, destination, date, and share links immediately upon completion.
+* **High-value friction:** High-value transactions must include manual confirmation friction (such as re-authenticating or typing a confirmation phrase).
+
+### CMS UX Rules
+* **WYSIWYG default:** Content editing must resemble the final output format. Raw markdown/code is an opt-in view.
+* **Accessible alt text:** alt text is required before an image asset can be saved in the media library.
+* **Version comparison:** Version history must be accessible from within the editor, supporting side-by-side diff comparisons.
+
+### EdTech UX Rules
+* **Visible motivation:** Learning progress, lesson counters, and streaks must be visual and highly visible.
+* **Positive reinforcement:** Celebrate lesson completion with visual or haptic feedback. Avoid negative words like "Wrong!"—use "Not quite, here is what to know."
+* **Curriculum transparency:** Learner path adjustments and starting placements must be explained clearly.
+
+---
+
+## UI Component Behavior Rules
+
+### Modals & Dialogs
+* **No modal traps:** Modals must close on × button click, backdrop click, or Escape key.
+* **No stacked modals:** Never overlay a modal on top of another modal. Use inline alerts or warnings.
+
+### Toasts & Notifications
+* **Timing:** Non-critical toasts auto-dismiss in 4–5 seconds. Error toasts must NOT auto-dismiss.
+* **Positioning:** Consistent top-right (desktop) or top-center (mobile).
+
+### Dropdowns & Selects
+* **Search filter:** Inline search must be active for select dropdowns with more than 10 options.
+* **Truncation tooltips:** Truncated option labels must display their full value in a tooltip on hover.
+
+### Buttons
+* **Double-click prevention:** Instantly disable and display loading spinner on button click when executing async actions.
+* **Disabled context:** Disabled buttons must have an adjacent tooltip explaining why they are locked.
+
+---
+
+## Psychological Laws of UX
+
+These core cognitive psychology laws guide all design and interaction decisions across Assembly:
+
+### Aesthetic-Usability Effect
+* **Law:** Users often perceive aesthetically pleasing design as design that's more usable.
+* **Assembly Practice:** Spend active effort on premium animations, Outfit typography, and balanced orange scale styling—a polished, premium look makes users significantly more tolerant of minor system delays or bugs.
+
+### Doherty Threshold
+* **Law:** Productivity soars when a computer and its users interact at a pace (less than 400ms) that ensures that neither has to wait on the other.
+* **Assembly Practice:** Keep response times under 400ms. For operations taking longer, immediately show micro-feedback or skeletons to keep the user engaged.
+
+### Fitts's Law
+* **Law:** The time to acquire a target is a function of the distance to and size of the target.
+* **Assembly Practice:** Standard touch targets must be at least 44x44px. Critical or high-frequency buttons must be physically larger and placed in highly accessible screen coordinates.
+
+### Hick's Law
+* **Law:** The time it takes to make a decision increases with the number and complexity of choices.
+* **Assembly Practice:** Minimize active choices to prevent decision paralysis. Group advanced options under progressive disclosure (e.g. Accordions, "Advanced" tabs).
+
+### Jakob's Law
+* **Law:** Users spend most of their time on other sites. They prefer your site to work the same way as all the other sites they already know.
+* **Assembly Practice:** Conform strictly to common visual conventions. Use standard icons (gear for settings, folder for projects, trash for delete) and familiar layouts.
+
+### Miller's Law
+* **Law:** The average person can only keep 7 (plus or minus 2) items in their working memory.
+* **Assembly Practice:** Do not show more than 7 ± 2 distinct elements or text blocks in one visual group. Use borders, white space, and dividers to chunk complex dashboards.
+
+### Peak-End Rule
+* **Law:** People judge an experience largely based on how they felt at its peak and at its end, rather than the total sum or average of every moment.
+* **Assembly Practice:** Deliver exceptional high-fidelity visual and haptic feedback during key peaks (e.g., successful database deploy) and the final exit interaction (receipts, success toasts).
+
+### Postel's Law (Robustness Principle)
+* **Law:** Be liberal in what you accept, and conservative in what you send.
+* **Assembly Practice:** Be highly tolerant of user input variations (e.g., accept spaces or dashes in inputs, trim whitespace, ignore casing in codes), but output clean, strictly structured data.
+
+### Serial Position Effect
+* **Law:** Users have a tendency to best remember the first and last items in a series.
+* **Assembly Practice:** Place the most critical nav items or main action buttons at the absolute start or end of lists and button groups.
+
+### Tesler's Law (Conservation of Complexity)
+* **Law:** For any system, there is a certain amount of complexity which cannot be reduced.
+* **Assembly Practice:** Do not over-simplify forms to the point of hiding crucial context. Move the complexity load to the system, but represent any irreducible complexity clearly.
+
+### Von Restorff Effect (Isolation Effect)
+* **Law:** When multiple similar objects are present, the one that differs from the rest is most likely to be remembered.
+* **Assembly Practice:** Make distinct actions (like destructive "Delete" buttons or active billing alert badges) visually unique to instantly isolate and call attention.
+
+### Zeigarnik Effect
+* **Law:** People remember uncompleted or interrupted tasks better than completed tasks.
+* **Assembly Practice:** Show clear visual cues for incomplete workflows (e.g. "Draft", "2 of 4 steps completed", or a persistent progress bar) to motivate completion.
+

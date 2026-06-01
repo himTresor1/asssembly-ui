@@ -1,0 +1,86 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+component: true
+source:
+  shadcn: true
+---
+
+<ComponentPreview name="input-demo" className="[&_input]:max-w-xs" peekCode wide />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add input
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Input } from '@/components/ui/input'
+```
+
+```tsx
+<Input />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview name="input-demo" className="[&_input]:max-w-xs" />
+
+### File
+
+<ComponentPreview name="input-file" className="[&_input]:max-w-xs" />
+
+### Disabled
+
+<ComponentPreview name="input-disabled" className="[&_input]:max-w-xs" />
+
+### With Label
+
+<ComponentPreview name="input-with-label" className="[&_input]:max-w-xs" />
+
+### With Button
+
+<ComponentPreview name="input-with-button" className="[&_input]:max-w-xs" />
+
+### Form
+
+<ComponentPreview name="input-form" />
+
+## UX Rules
+
+* **Validation on Blur:** Validate input fields on blur (losing focus), not on change (keystroke). Never punish the user before they finish typing.
+* **Error Placement:** Show validation errors next to the field they relate to, not only in a banner at the top of the form.
+* **Preserving User Input:** Preserve user input on error. NEVER clear an input or a form because of a failed submission.
+* **Placeholder Constraint:** Placeholder text is not a label. Every input must have a visible label (paired consistently). Placeholder text may supplement but never replace a label.
+* **Auto-format:** Credit card, phone, and date fields must auto-format as the user types. Never make users type dashes or spaces manually.
+

@@ -1,0 +1,65 @@
+---
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+component: true
+source:
+  shadcn: true
+---
+
+<ComponentPreview name="skeleton-demo" peekCode wide />
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn-ui@latest add skeleton
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="skeleton" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Usage
+
+```tsx
+import { Skeleton } from '@/components/ui/skeleton'
+```
+
+```tsx
+<Skeleton className="w-[100px] h-[20px] rounded-full" />
+```
+
+## Examples
+
+### Card
+
+<ComponentPreview name="skeleton-card" />
+
+## UX Rules
+
+* **Skeletons over Spinners:** Use skeleton screens (not spinners) for any content area larger than 200×200px. Skeletons are preferred for layout-heavy content.
+* **Structure Matching:** Loading states must reflect the actual structure of the content that will appear. A skeleton for a list of cards must look like cards, not a generic grey rectangle.
+* **Layout Shift Prevention:** Loading states must not cause layout shift. Reserve space for content before it loads.
+* **Viewport Blocking:** NEVER block the entire viewport with a full-screen spinner for more than 3 seconds.
+

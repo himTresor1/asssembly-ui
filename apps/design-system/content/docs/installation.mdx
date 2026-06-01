@@ -1,0 +1,65 @@
+---
+title: Installation
+description: Step-by-step developer guide to initializing Assembly, importing stylesheets, and adding your first components.
+priority: true
+---
+
+Assembly is distributed via a portable source model, offering an interactive CLI tool to configure your project directories and import styling automatically.
+
+Follow these three simple steps to integrate Assembly into your Next.js application.
+
+---
+
+### Step 1: Initialize the CLI
+
+Run the initialization wizard in your project root to map your configuration directories and helper locations:
+
+```bash
+npx @assembly/cli init
+```
+
+The CLI will prompt you for your setup folders:
+* **Global stylesheet path**: Point to your main CSS file `(e.g., app/globals.css)`.
+* **Component output folder**: Choose where Assembly components are written `(e.g., components/assembly)`.
+* **Utility output folder**: Choose where utility helpers are placed `(e.g., lib/assembly)`.
+
+This creates a local `assembly.config.json` mapping and writes a standard `cn` utility function.
+
+---
+
+### Step 2: Global Stylesheet Import
+
+If the CLI did not auto-inject the import, make sure to import the consolidated Assembly stylesheet at the top of your global CSS file:
+
+```css title="app/globals.css"
+@import "@assembly/config/css/assembly.css";
+```
+
+This ensures your project instantly inherits our vibrant light/dark orange scales, Outfit font definitions, Fira Code ligature rules, and transition bases.
+
+---
+
+### Step 3: Add Your First Component
+
+Once initialized, download any component from the Assembly library:
+
+```bash
+npx @assembly/cli add button
+```
+
+The CLI will fetch the component, **automatically rewrite relative monorepo imports to match your project folder alias**, and write it cleanly to your codebase.
+
+You are now ready to import and use the Button:
+
+```tsx title="app/page.tsx"
+import { Button } from '@/components/assembly/button'
+
+export default function Page() {
+  return (
+    <div className="flex gap-4 p-8">
+      <Button type="primary">Assembly Button</Button>
+      <Button type="outline">Contact Support</Button>
+    </div>
+  )
+}
+```

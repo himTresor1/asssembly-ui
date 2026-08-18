@@ -4,10 +4,10 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm run dev:css\" \"vite\"",
-    "dev:css": "tailwindcss -w -i ./src/tailwind.css -o src/assets/app.css",
-    "build": "npm run build:css && vite build",
-    "build:css": "tailwindcss -m -i ./src/tailwind.css -o src/app.css",
+    "dev": "node init && concurrently \"npm run dev:css\" \"vite\"",
+    "dev:css": "node init && tailwindcss -w -i ./src/tailwind.css -o src/assets/app.css",
+    "build": "node init && npm run build:css && vite build",
+    "build:css": "node init && tailwindcss -m -i ./src/tailwind.css -o src/app.css",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },

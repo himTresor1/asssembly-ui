@@ -2,8 +2,8 @@
   "name": "hono-vite-jsx",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build --mode client && vite build"
+    "dev": "node init && vite",
+    "build": "node init && vite build --mode client && vite build"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.2",

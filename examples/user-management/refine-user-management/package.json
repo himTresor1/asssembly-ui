@@ -25,13 +25,21 @@
     "vite": "^7.3.1"
   },
   "scripts": {
-    "dev": "refine dev",
-    "build": "tsc && refine build",
+    "dev": "node init && refine dev",
+    "build": "node init && tsc && refine build",
     "preview": "refine start",
     "refine": "refine"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

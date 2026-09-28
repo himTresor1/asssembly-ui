@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev:css\" \"next dev\"",
-    "dev:css": "tailwindcss -w -i ./styles/tailwind.css -o styles/app.css",
-    "build": "next build",
-    "build:css": "tailwindcss -m -i ./styles/tailwind.css -o styles/app.css",
-    "start": "next start",
+    "dev": "node init && concurrently \"npm run dev:css\" \"next dev\"",
+    "dev:css": "node init && tailwindcss -w -i ./styles/tailwind.css -o styles/app.css",
+    "build": "node init && next build",
+    "build:css": "node init && tailwindcss -m -i ./styles/tailwind.css -o styles/app.css",
+    "start": "node init && next start",
     "lint": "next lint"
   },
   "dependencies": {

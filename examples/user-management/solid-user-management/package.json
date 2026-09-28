@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "description": "",
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
+    "start": "node init && vite",
+    "dev": "node init && vite",
+    "build": "node init && vite build",
     "serve": "vite preview",
     "format": "prettier --cache --write \"src/*.{js,json,ts,tsx,jsx}\""
   },

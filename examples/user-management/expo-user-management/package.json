@@ -2,7 +2,7 @@
   "name": "expo-user-management",
   "version": "2.0.0",
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "node init && expo start --dev-client",
     "prebuild": "expo prebuild",
     "android": "expo run:android",
     "ios": "expo run:ios",

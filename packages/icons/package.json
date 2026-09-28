@@ -3,7 +3,7 @@
   "main": "./src/icons/index.ts",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build:icons": "build-icons --templateSrc=./scripts/exportTemplate.mjs --renderUniqueKey --iconFileExtension=.ts --exportFileName=index.ts",
+    "build:icons": "node init && build-icons --templateSrc=./scripts/exportTemplate.mjs --renderUniqueKey --iconFileExtension=.ts --exportFileName=index.ts",
     "clean": "rimraf node_modules .turbo"
   },
   "dependencies": {

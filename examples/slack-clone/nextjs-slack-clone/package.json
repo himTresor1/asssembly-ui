@@ -3,10 +3,10 @@
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
-    "dev": "node init && next dev",
+    "dev": "next dev",
     "export": "next export",
-    "build": "node init && next build",
-    "start": "node init && next start"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2",

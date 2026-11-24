@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node init && wrangler dev",
+    "start": "wrangler dev",
     "deploy": "wrangler publish"
   },
   "dependencies": {

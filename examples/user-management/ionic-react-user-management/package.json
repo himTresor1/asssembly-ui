@@ -21,8 +21,8 @@
     "react-router-dom": "^5.3.4"
   },
   "scripts": {
-    "dev": "node init && vite",
-    "build": "node init && vite build",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {

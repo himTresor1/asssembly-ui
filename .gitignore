@@ -162,7 +162,3 @@ examples/**/yarn.lock
 examples/**/pnpm-lock.yaml
 
 .env.*.local
-config.bat
-branch_structure.json
-temp_auto_push.bat
-temp_interactive_push.bat
